@@ -1,7 +1,7 @@
-apiversion: "3"
+apiversion: '3'
+kind: ConfigMap
+metadata:
+  name: db-conf
 data: 
   host: mysql
   name: rdsapp
-kind: ConfigMap
-metadata: 
-  name: db-conf
