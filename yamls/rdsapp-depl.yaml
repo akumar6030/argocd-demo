@@ -24,7 +24,7 @@ spec:
         app: rdsapp-depl
     spec:
       containers:
-      - image: akumar6030/rdsapp1:4
+      - image: akumar6030/rdsapp1:5
         imagePullPolicy: IfNotPresent
         name: rdsapp1
         resources: {}
