@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: rdsapp1
-  name: rdsapp1
+  name: rdsapp1-deployment
   namespace: default
 spec:
   progressDeadlineSeconds: 600
@@ -19,7 +19,6 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: rdsapp1
     spec:
