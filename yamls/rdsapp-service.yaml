@@ -8,8 +8,6 @@ spec:
   selector:           
     app: rdsapp1
   ports:
-    - nodePort: 32598
+    - protocol: TCP
       port: 8088      
-      targetPort: 8088 
-      protocol: TCP
-  type: NodePort 
+      targetPort: 8088
