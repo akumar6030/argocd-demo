@@ -11,4 +11,4 @@ spec:
     - protocol: TCP
       nodePort: 32598      
       targetPort: 8088
-    type: NodePort
+  type: NodePort
