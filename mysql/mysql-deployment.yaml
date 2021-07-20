@@ -1,48 +1,72 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mysql  # DNS name 
+  labels:
+    app: mysql
+    tier: database
 spec:
   ports:
-  - port: 3306
-  selector:
+    - port: 3306
+      targetPort: 3306
+  selector:       # mysql Pod Should contain same labels
     app: mysql
-  clusterIP: None
+    tier: database
+  clusterIP: None 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
+  labels:
+    app: mysql
+    tier: database
 spec:
   selector:
     matchLabels:
       app: mysql
+      tier: database
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: mysql
+        tier: database
     spec:
       containers:
-      - image: mysql:8.0.22
-        name: mysql
-        env:
-          # Use secret in real usage
-        - name: MYSQL_ROOT_PASSWORD
-          value: password
-        - name: MYSQL_DATABASE
-            valueFrom: 
-              configMapKeyRef: 
-                name: db-conf
-                key: name
-        ports:
-        - containerPort: 3306
+        - image: 'mysql:5.7'
+          args:
+            - '--ignore-db-dir=lost+found'
           name: mysql
-        volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-root-credentials
+                  key: password
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: username
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: db-conf
+                  key: name
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
       volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
