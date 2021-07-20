@@ -1,15 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rdsapp1
+  name: rdsapp1-service
   labels:
-    name: rdsapp1
+    name: rdsapp1-svc
 spec:
+  selector:           
+    app: rdsapp1
   ports:
     - nodePort: 32598
       port: 8088      
       targetPort: 8088 
       protocol: TCP
-  selector:           
-    app: rdsapp1
+  
   type: NodePort 
