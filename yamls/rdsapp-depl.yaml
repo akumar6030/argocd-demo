@@ -34,22 +34,22 @@ spec:
           - name: DB_HOST   # Setting Database host address from configMap
             valueFrom: 
               configMapKeyRef:
-                name: db-conf  # name of configMap
+                name: db-conf-rdsapp  # name of configMap
                 key: host
           - name: DB_NAME  # Setting Database name from configMap
             valueFrom:
               configMapKeyRef:
-                name: db-conf 
+                name: db-conf-rdsapp 
                 key: name
           - name: DB_USERNAME  # Setting Database username from Secret
             valueFrom:
               secretKeyRef:
-                name: db-credentials # Secret Name
+                name: db-credentials-rdsapp # Secret Name
                 key: username
           - name: DB_PASSWORD # Setting Database password from Secret
             valueFrom:
               secretKeyRef:
-                name: db-credentials
+                name: db-credentials-rdsapp
                 key: password 
       dnsPolicy: ClusterFirst
       restartPolicy: Always
