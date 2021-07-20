@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: rdsapp
-  name: rdsapp
+    app: rdsapp-depl
+  name: rdsapp-depl
   namespace: default
 spec:
   progressDeadlineSeconds: 600
@@ -11,7 +11,7 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: rdsapp
+      app: rdsapp-depl
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -19,24 +19,17 @@ spec:
     type: RollingUpdate
   template:
     metadata:
+      creationTimestamp: null
       labels:
-        app: rdsapp
+        app: rdsapp-depl
     spec:
       containers:
       - image: akumar6030/rdsapp1:5
         imagePullPolicy: IfNotPresent
         name: rdsapp1
-        ports: 
-          containerPort: 8088
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
-        env: 
-        - name: DB_NAME  # Setting Database name from configMap
-            valueFrom:
-              configMapKeyRef:
-                name: db-conf 
-                key: name
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
