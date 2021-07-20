@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: rdsapp1
-  name: rdsapp1-deployment
+  name: rdsapp1
   namespace: default
 spec:
   progressDeadlineSeconds: 600
