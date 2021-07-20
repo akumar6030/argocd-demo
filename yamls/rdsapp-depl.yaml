@@ -29,8 +29,6 @@ spec:
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
-        ports: 
-        - containerPort: 8088
         env:   # Setting Enviornmental Variables
           - name: DB_HOST   # Setting Database host address from configMap
             valueFrom: 
