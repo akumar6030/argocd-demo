@@ -25,6 +25,8 @@ spec:
       containers:
       - name: rdsapp1
         image: akumar6030/rdsapp1:5
+        ports: 
+        - containerPort: 8088
         imagePullPolicy: IfNotPresent
         resources: {}
         terminationMessagePath: /dev/termination-log
