@@ -6,7 +6,7 @@ metadata:
     name: rdsapp1
 spec:
   ports:
-    - nodePort: 32548 
+    - nodePort: 12548 
       port: 8088      
       targetPort: 8088 
       protocol: TCP
