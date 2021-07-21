@@ -7,9 +7,9 @@ metadata:
 spec:
   selector:           
     app: rdsapp1
+  type: LoadBalancer
   ports:
     - protocol: TCP
       nodePort: 32598
       port: 8088
       targetPort: 8088
-  type: NodePort
