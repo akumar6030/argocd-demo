@@ -8,12 +8,7 @@ spec:
     app: rdsapp1
   ports:
   - name: http
-    nodePort: 30001
-    port: 8880
-    protocol: TCP
-    targetPort: 8080
-  - name: https
-    nodePort: 30002
+    nodePort: 31090
     port: 8880
     protocol: TCP
     targetPort: 8080
