@@ -2,13 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: rdsapp1-deployment
-  name: rdsapp1
+    app: rdsapp1
+  name: rdsapp1-deployment
   namespace: default
 spec:
   progressDeadlineSeconds: 600
   replicas: 3
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: rdsapp1
@@ -52,8 +51,3 @@ spec:
               secretKeyRef:
                 name: db-credentials-rdsapp
                 key: password 
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
