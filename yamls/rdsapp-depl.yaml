@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: rdsapp1-deployment
   labels:
     app: rdsapp1
-  name: rdsapp1-deployment
   namespace: default
 spec:
   progressDeadlineSeconds: 600
