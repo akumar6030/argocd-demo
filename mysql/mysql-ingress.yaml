@@ -5,10 +5,11 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: ppd.mysql.com
-    http:
-      paths: 
-      - backend:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
           service:
             name: mysql
             port:
