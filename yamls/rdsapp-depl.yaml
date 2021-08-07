@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: rdsapp1
-        image: akumar6030/rdsapp1:9
+        image: akumar6030/rdsapp1:tagVersion
         ports: 
         - containerPort: 8080
         imagePullPolicy: IfNotPresent
