@@ -13,7 +13,7 @@ pipeline{
         sh "./entry.sh ${BUILD_NUMBER}"
         sh 'git commit -am "Updating the rdsapp-depl file dynamically."'
         sh 'git branch'
-        sh 'git remote add https://github.com/akumar6030/argocd-demo.git'
+        sh 'git remote add origin https://github.com/akumar6030/argocd-demo.git'
         sh 'git remote -v'
         sh 'git push origin master'
       }
