@@ -13,8 +13,9 @@ pipeline{
         sh "./entry.sh ${BUILD_NUMBER}"
         sh 'git commit -am "Updating the rdsapp-depl file dynamically."'
         sh "git branch"
+        sh "git log --oneline"
         sh 'git remote -v'
-        sh "git push upstream master"
+        sh "git push -f upstream master"
       }
     }
   }
