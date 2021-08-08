@@ -16,7 +16,7 @@ pipeline{
         sh "git branch"
         sh "git log --oneline"
         sh 'git remote -v'
-        sh "git push -f upstream master"
+        sh "git push -f origin master"
       }
     }
   }
