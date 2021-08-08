@@ -5,6 +5,7 @@ pipeline{
     registry = 'akumar6030/rdsapp1'
     registryCredential = 'DockerHub'
   }
+  stages{
     stage('Depoloy-qal') {
       steps{
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/akumar6030/argocd-demo.git']]])
@@ -15,3 +16,4 @@ pipeline{
       }
     }
   }
+}
