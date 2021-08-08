@@ -13,7 +13,7 @@ pipeline{
         sh "chmod +x entry.sh"
         sh "./entry.sh ${BUILD_NUMBER}"
         sh 'git commit -am "Updating the rdsapp-depl file dynamically."'
-        sh "git branch -mv origin master"
+        sh "git checkout -b master"
         sh "git branch"
         sh "git log --oneline"
         sh 'git remote -v'
