@@ -12,6 +12,7 @@ pipeline{
         sh "chmod +x entry.sh"
         sh "./entry.sh ${BUILD_NUMBER}"
         sh 'git commit -am "Updating the rdsapp-depl file dynamically."'
+        sh 'git remote add https://github.com/akumar6030/argocd-demo.git'
         sh 'git push origin master'
       }
     }
