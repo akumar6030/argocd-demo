@@ -10,7 +10,7 @@ pipeline{
       steps{
         checkout([$class: 'GitSCM', branches: [[name: 'master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/akumar6030/argocd-demo.git']]])
         sh "git checkout master"
-        sh "git branch"
+        sh "git pull --rebase origin master"
         sh "chmod +x entry.sh"
         sh "./entry.sh ${BUILD_NUMBER}"
         sh 'git commit -am "Updating the rdsapp-depl file dynamically."'
