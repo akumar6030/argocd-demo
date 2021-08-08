@@ -9,6 +9,7 @@ pipeline{
     stage('Depoloy-qal') {
       steps{
         checkout([$class: 'GitSCM', branches: [[name: 'master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/akumar6030/argocd-demo.git']]])
+        sh "git checkout master"
         sh "git branch"
         sh "chmod +x entry.sh"
         sh "./entry.sh ${BUILD_NUMBER}"
