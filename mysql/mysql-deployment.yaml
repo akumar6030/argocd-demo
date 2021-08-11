@@ -41,7 +41,7 @@ spec:
               cpu: 300m
               memory: 400Mi
           volumeMounts:
-            - name: mysql-storage
+            - name: mysql-persistent-storage
               mountPath: "/var/lib/mysql"
               subPath: "mysql" 
             - name: mysql-conf
@@ -52,7 +52,12 @@ spec:
                 secretKeyRef:
                   name: db-root-credentials
                   key: password
+            - name: MYSQL_DATABASE # Setting Database Name from a 'ConfigMap'
+              valueFrom:
+                configMapKeyRef:
+                  name: db-conf
+                  key: name
       volumes:
-        - name: mysql-pv-volume
+        - name: mysql-persistent-storage
           persistentVolumeClaim:
             claimName: mysql-pv-claim
