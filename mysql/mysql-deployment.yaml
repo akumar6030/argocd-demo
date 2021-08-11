@@ -53,6 +53,6 @@ spec:
                   name: db-root-credentials
                   key: password
       volumes:
-        - name: mysql-storage
+        - name: mysql-pv-volume
           persistentVolumeClaim:
-            claimName: mysql-storage
+            claimName: mysql-pv-claim
