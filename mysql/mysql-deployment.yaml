@@ -53,7 +53,7 @@ spec:
             - name: MYSQL_DATABASE # Setting Database Name from a 'ConfigMap'
               valueFrom:
                 configMapKeyRef:
-                  name: db-conf
+                  name: mysql-conf
                   key: name
       volumes:
         - name: mysql-persistent-storage
