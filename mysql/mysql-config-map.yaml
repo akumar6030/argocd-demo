@@ -5,13 +5,14 @@ metadata:
   namespace: mysql
   labels:
     app: mysql
-    version: "8.0.22"
 data:
- host: mysql
- name: rdsapp
- my.cnf: |
+  host: mysql
+  name: rdsapp
+  primary.cnf: |
+    # Apply this config only on the primary.
     [mysqld]
-    max_connections = 600
-    read_buffer_size = 1048576
-    net_read_timeout = 360
-    net_write_timeout = 360
+    log-bin    
+  replica.cnf: |
+    # Apply this config only on replicas.
+    [mysqld]
+    super-read-only 
