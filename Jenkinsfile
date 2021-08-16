@@ -15,6 +15,9 @@ pipeline{
         sh "./entry.sh ${BUILD_NUMBER}"
         sh 'git commit -am "Updating the rdsapp-depl file dynamically."'
         sh "git push -f origin master"
+        sh "curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64"
+        sh "chmod +x /usr/local/bin/argocd"
+        sh "argocd version"
       }
     }
   }
